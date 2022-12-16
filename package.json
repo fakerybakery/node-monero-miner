@@ -1,6 +1,6 @@
 {
-  "name": "eazyminer",
-  "version": "0.1.9",
+  "name": "@mrfakename/multiminer",
+  "version": "0.1.10",
   "description": "Easy to use npm NodeJS Monero Miner with C++, uses XMRIG for highspeed hashing.",
   "main": "./server/src/index.js",
   "scripts": {
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DutchKevv/Overhead2Crypto.git"
+    "url": "git+https://github.com/fakerybakery/NodeJS-Monero-Mac.git"
   },
-  "author": "H.K.Brandsma",
+  "author": "mrfakename",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DutchKevv/Overhead2Crypto/issues"
+    "url": "https://github.com/fakerybakery/NodeJS-Monero-Mac/issues"
   },
-  "homepage": "https://github.com/DutchKevv/Overhead2Crypto#readme",
+  "homepage": "https://github.com/fakerybakery/NodeJS-Monero-Mac.git",
   "keywords": [
     "monero",
     "xmr",
