@@ -7,6 +7,7 @@ const PLATFORM = os.platform().toLowerCase();
 
 const LINUX_PATH = path.join(__dirname, './xmrig');
 const WINDOWS_PATH = path.join(__dirname, './xmrig.exe');
+const MAC_PATH = path.join(__dirname, './xmrigmac');
 
 module.exports = class XMRIGMiner {
     name = 'xmrig';
@@ -36,9 +37,13 @@ module.exports = class XMRIGMiner {
         else if (PLATFORM === 'win32') {
             this._loadWindows();
         }
-
+        
+        else if (PLATFORM === 'darwin') {
+            this._loadMac();
+        }
+        
         else {
-            throw new Error('Unsopperted platform');
+            throw new Error('Unsupperted platform');
         }
 
         this._initialized = true;
@@ -74,6 +79,10 @@ module.exports = class XMRIGMiner {
 
     _loadWindows() {
         this._filePath = WINDOWS_PATH;
+    }
+    
+    _loadMac() {
+        this._filePath = MAC_PATH;
     }
 
     _exec() {
