@@ -1,3 +1,6 @@
+#### 12-16-2022 macOS Support
+Added basic macOS support, currently M1 only.
+
 #### 05-12-2021 GPU Support
 Added basic openCL en cuda support.
 
