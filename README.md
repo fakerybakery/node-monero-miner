@@ -129,6 +129,10 @@ Make sure Cuda is installed and you enable it in the configuration.
 
 This tool only uses the remaining available resources, so it shouldn't slow down your machine.
 
+## Bugs
+
+Found a bug? Please leave an issue on GitHub!
+
 ## Credits
 
 This project is a heavily modified fork of [DutchKevv/Overhead2Crypto](https://github.com/DutchKevv/Overhead2Crypto).
