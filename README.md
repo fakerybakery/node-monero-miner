@@ -15,7 +15,7 @@ The miner wasn't always starting with previous versions. Please update.
 &#x200B;
 
 ```
-npm install eazyminer
+npm i @mrfakename/multiminer
 ```
 
 &#x200B;
