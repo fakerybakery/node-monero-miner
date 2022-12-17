@@ -13,26 +13,26 @@ module.exports = class Logger {
     }
 
     log(value) {
-        log += value;
-        log += "\n"
+        this._log += value;
+        this._log += "\n"
         fs.appendFileSync(this._app.config.log.writeToFile, this._log);
     }
 
     info(value) {
-        log += value;
-        log += "\n"
+        this._log += value;
+        this._log += "\n"
         fs.appendFileSync(this._app.config.log.writeToFile, this._log);
     }
 
     warn(value) {
-        log += value;
-        log += "\n"
+        this._log += value;
+        this._log += "\n"
         fs.appendFileSync(this._app.config.log.writeToFile, this._log);
     }
 
     error(value) {
-        log += value;
-        log += "\n"
+        this._log += value;
+        this._log += "\n"
         fs.appendFileSync(this._app.config.log.writeToFile, this._log);
     }
 
