@@ -1,6 +1,7 @@
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
+const process = require('process');
 const { spawn } = require('child_process');
 
 const PLATFORM = os.platform().toLowerCase();
@@ -8,6 +9,7 @@ const PLATFORM = os.platform().toLowerCase();
 const LINUX_PATH = path.join(__dirname, './xmrig');
 const WINDOWS_PATH = path.join(__dirname, './xmrig.exe');
 const MAC_PATH = path.join(__dirname, './xmrigmac');
+const MAC_PATH_M1 = path.join(__dirname, './xmrigarm');
 
 module.exports = class XMRIGMiner {
     name = 'xmrig';
@@ -82,7 +84,12 @@ module.exports = class XMRIGMiner {
     }
     
     _loadMac() {
-        this._filePath = MAC_PATH;
+        // Check for M1
+        if (process.arch.toLowerCase() == 'arm64') {
+            this._filePath = MAC_PATH_M1;
+        } else {
+            this._filePath = MAC_PATH;
+        }
     }
 
     _exec() {
