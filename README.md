@@ -133,6 +133,10 @@ This tool only uses the remaining available resources, so it shouldn't slow down
 
 Found a bug? Please leave an issue on GitHub!
 
-## Credits
+## Credits &amp; License
 
 This project is a heavily modified fork of [DutchKevv/Overhead2Crypto](https://github.com/DutchKevv/Overhead2Crypto).
+
+This project is licensed under the ISC license.
+
+XMRig is licensed under the [GNU General Public License v3.0](https://github.com/xmrig/xmrig/blob/master/LICENSE).
