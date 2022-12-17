@@ -1,82 +1,40 @@
-### This project is a fork of [DutchKevv/Overhead2Crypto](https://github.com/DutchKevv/Overhead2Crypto) with crossplatform support.
+# node-monero-miner
 
-#### 12-16-2022 Intel Support
-Completed macOS support!
+## Introduction
 
-#### 12-16-2022 macOS Support
-Added basic macOS support, currently M1 only.
+`node-monero-miner` is a simple tool to mine Cryptonote-based cryptocurrencies, including Monero (XMR), Bytecoin (BCN), and Ravencoin (RVN). This tool is a simple NodeJS wrapper for the [XMRig miner](https://github.com/xmrig/xmrig).
 
-#### 05-12-2021 GPU Support
-Added basic openCL en cuda support.
+## Install
 
-#### 04-12-2021 Configuration overhaul
-Updated configuration settings, adding a lot of options.
-
-#### 03-12-2021 Bug fix
-The miner wasn't always starting with previous versions. Please update.
-
-&#x200B;
+To install `node-monero-miner`, just run:
 
 ```
 npm i node-monero-miner
 ```
 
-&#x200B;
+## Usage
 
-# Easy Node Miner
-
-Mine cryptocurrencies [Monero (XMR)](https://getmonero.org/) from **SERVERSIDE** node.js with C++ XMRIG.
-**CPU + GPU** Support.
-
-Works on **Linux** & **Windows**. Just include this npm module and make some extra coins :)
-
-&#x200B;
-
-# Without freezing down the machine
-
-The mining software has a cpu-priority of 0, meaning it will ONLY use FREE / AVAILABLE RESOURCES
-
-Just try it out. Use the miner and happily continue using the machine.
-
-&#x200B;
-
-# Why this package?
-
-Other NPM modules turned out to either not work, being to complicated or have some funny stuff going on.
-This package is made to be transparent, easy and FAST.
-
-It can be used on:
-
-&#x200B;
-
-* CI/CD setups where the machines do nothing for a long period of time
-* Webservers that don't have a lot of traffic.
-* Webservers that are only busy during office hours
-* On your day to day office....
-
-&#x200B;
-
-# Usage
+Here's how to use `node-monero-miner`:
 
 ```js
-const Miner = require('eazyminer');
+const Miner = require('node-monero-miner');
 
 const miner = new Miner({
     pools: [{
         coin: 'XMR',
         user: '47D8WQoJKydhTkk26bqZCVF7FaNhzRtNG15u1XiRQ83nfYqogyLjPMnYEKarjAiCz93oV6sETE9kkL3bkbvTX6nMU24CND8',
-        url: 'xmrpool.eu:9999', // optional pool URL,
+        url: 'pool.supportxmr.com:443', // optional pool URL,
+        pass: 'x',
+        tls: true,
     }],
-    autoStart: false // optional delay
+    autoStart: false // Don't start the miner immediately
 });
 
-miner.start(); // optional manually start the miner
-// miner.stop() // manually stop the miner
+miner.start(); // Start the miner if autoStart is set to false
+// miner.stop() // Stop the miner
 ```
 
-&#x200B;
-
-# Config
+## Documentation
 
 ```js
 {
@@ -86,24 +44,24 @@ miner.start(); // optional manually start the miner
             coin: 'XMR',
 
             // wallet address
-            user: "47D8WQoJKydhTkk26bqZCVF7FaNhzRtNG15u1XiRQ83nfYqogyLjPMnYEKarjAiCz93oV6sETE9kkL3bkbvTX6nMU24CND8",
+            user: '<Your wallet address>',
             
             /**
              * optional
              */ 
-            url: "xmrpool.eu:9999",
-            pass: "x",
+            url: 'pool.supportxmr.com:443',
+            pass: 'x',
             algo: null,
-            "rig-id": null,
+            'rig-id': null,
             nicehash: false,
             enabled: true,
             keepalive: true,
             tls: true,
-            "tls-fingerprint": null,
+            'tls-fingerprint': null,
             daemon: false,
             socks5: null,
-            "self-select": null,
-            "submit-to-origin": false
+            'self-select': null,
+            'submit-to-origin': false
         }
     ],
 
@@ -116,10 +74,9 @@ miner.start(); // optional manually start the miner
         enabled: false,
         platform: 'AMD',
         loader: null,
-        platform: "AMD",
         adl: true,
-        "cn-lite/0": false,
-        "cn/0": false
+        'cn-lite/0': false,
+        'cn/0': false
     },
 
     // (XMRIG config options https://xmrig.com/docs/miner/config/cuda)
@@ -127,8 +84,8 @@ miner.start(); // optional manually start the miner
         enabled: false,
         loader: null,
         nvml: true,
-        "cn-lite/0": false,
-        "cn/0": false
+        'cn-lite/0': false,
+        'cn/0': false
     },
 
     // Run only when NODE_ENV is set to production
@@ -147,9 +104,7 @@ miner.start(); // optional manually start the miner
         port: 3000 
     },
     log: {
-
-        // Set to null to disable
-        writeToFile: 'easyminer.txt',
+        writeToFile: 'log.txt',
 
         // Set to false to disable writing to console
         writeToConsole: true
@@ -157,28 +112,23 @@ miner.start(); // optional manually start the miner
 }
 ```
 
-# Web client
+## Web Client
 
-The library contains an easy to use web-overview (optional).
-Just go to localhost:3000 and check your realtime stats.
+This package includes a web client to visualize speed and efficiency. By default, it is accessible at [localhost:3000](http://localhost:3000). Try disabling this web client if you don't want something clogging up port 3000.
 
-&#x200B;
+## OpenCL support (GPU)
 
-# OpenCL support (GPU)
+Make sure OpenCL is installed and you enable it in the config. 
+Most graphic drivers include the OpenCL platform by default.
 
-Make sure openCL is installed and you enable it in the config. 
-Most graphic drivers include the openCL platform by default.
+## Cuda support (GPU)
 
-&#x200B;
+Make sure Cuda is installed and you enable it in the configuration.
 
-# Cuda support (GPU)
+## Dynamic Resource Allocation
 
-Make sure cuda is installed and you enable it in the config.
+This tool only uses the remaining available resources, so it shouldn't slow down your machine.
 
-&#x200B;
+## Credits
 
-# Development
-
-This is a fresh new package, so i'm making sure everything runs fine and not focusing to much on new features.
-If you have ANY problem, please drop a bug report on Github. If there are enough people using this, I will start to invest heavily. 
-
+This project is a heavily modified fork of [DutchKevv/Overhead2Crypto](https://github.com/DutchKevv/Overhead2Crypto).
