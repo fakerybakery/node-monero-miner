@@ -1,6 +1,6 @@
 {
   "name": "node-monero-miner",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Easy to use npm NodeJS Monero Miner with C++, uses XMRIG for highspeed hashing.",
   "main": "./server/src/index.js",
   "scripts": {
